@@ -1,0 +1,13 @@
+WIN32_ERROR
+
+GetIfTable
+MIB_IFTABLE
+
+IF_TYPE_ETHERNET_CSMACD
+IF_TYPE_IEEE80211
+IF_TYPE_PPP
+IF_TYPE_SOFTWARE_LOOPBACK
+
+GetSystemTimes
+GlobalMemoryStatusEx
+GetLogicalProcessorInformationEx
