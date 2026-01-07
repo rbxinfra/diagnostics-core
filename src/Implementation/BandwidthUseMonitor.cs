@@ -22,10 +22,11 @@ public sealed class BandwidthUseMonitor : IDisposable
     private const double _MilisecondsInSecond = 1000;
     private const double _BytesInKilobyte = 1024;
     private const char _CsvSeparator = ',';
+    private const char _SpaceSeparator = ' ';
 
     private readonly ILogger _Logger;
     private readonly IBandwithUseMonitorSettings _Settings;
-    private readonly string[] _EmpStringArray = Array.Empty<string>();
+    private readonly string[] _EmpStringArray = [];
 
     private double _UploadSpeedKbps;
     private double _DownloadSpeedKbps;
@@ -85,7 +86,7 @@ public sealed class BandwidthUseMonitor : IDisposable
         );
     }
 
-    private double CalculateNetworkSpeedInKbps(long bytes, long elapsedMilliseconds) => bytes / _BytesInKilobyte / (elapsedMilliseconds / _MilisecondsInSecond);
+    private double CalculateNetworkSpeedInKbps(long bytes, long elapsedMilliseconds) => (double)(bytes / _BytesInKilobyte) / (double)(elapsedMilliseconds / _MilisecondsInSecond);
 
     private (long bytesIn, long bytesOut) ExtractBytesTransferredSoFar(string[] networkInterfacePrefixesToIgnore)
     {
@@ -105,7 +106,7 @@ public sealed class BandwidthUseMonitor : IDisposable
 
             for (int i = 2; i < netdevices.Length; i++)
             {
-                var interfaces = netdevices[i].Split(new[] { _CsvSeparator }, StringSplitOptions.RemoveEmptyEntries);
+                var interfaces = netdevices[i].Split([_CsvSeparator, _SpaceSeparator], StringSplitOptions.RemoveEmptyEntries);
                 if (interfaces.Length < 10 || interfaces[0] == null || interfaces[0].Length == 0) continue;
 
                 var interfaceType = interfaces[0].Substring(0, interfaces[0].Length - 1);

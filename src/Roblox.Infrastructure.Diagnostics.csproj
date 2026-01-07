@@ -3,7 +3,7 @@
 	<PropertyGroup>
         <Description>Helper methods for discovering diagnostics information about servers.</Description>
 
-        <Version>1.2.4</Version>
+        <Version>1.2.5</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
