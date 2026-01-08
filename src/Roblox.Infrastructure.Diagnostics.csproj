@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-        <Description>Helper methods for discovering diagnostics information about servers.</Description>
+        <Description>Helper methods for discovering diagnostics information about servers</Description>
 
         <Version>1.2.5</Version>
 	</PropertyGroup>
